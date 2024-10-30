@@ -1,0 +1,23 @@
+React router dom in file App (global)
+exp:
+    <Router>
+      <div className='nav-'>
+        <Nav/>
+        <Switch>
+            <Route path="/news">
+              news
+            </Route>
+            <Route path="/about">
+              about
+            </Route>
+            <Route path="/contact">
+              contact
+            </Route>
+            <Route path="/">
+              home
+            </Route>
+          </Switch>
+      </div>
+    </Router>
+
+Then NavLink in the Nav file to prevent reloading the whole webpage when switching tabs
