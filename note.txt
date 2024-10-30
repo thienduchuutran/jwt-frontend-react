@@ -21,3 +21,9 @@ exp:
     </Router>
 
 Then NavLink in the Nav file to prevent reloading the whole webpage when switching tabs
+NavLink takes care of active nav section for us, so we don't need to className="active" anymore
+
+            <Route path="*">
+              404 not found
+            </Route>
+This is for the case when no route is found

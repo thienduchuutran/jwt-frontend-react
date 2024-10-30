@@ -6,11 +6,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Login from './components/Login/Login'
+
 function App() {
   return (
     <Router>
       <div className='nav-'>
-        <Nav/>
+        {/* <Nav/> */}
         <Switch>
             <Route path="/news">
               news
@@ -21,8 +23,14 @@ function App() {
             <Route path="/contact">
               contact
             </Route>
-            <Route path="/">
+            <Route path="/login">
+              <Login/>
+            </Route>
+            <Route path="/" exact>
               home
+            </Route>
+            <Route path="*">
+              404 not found
             </Route>
           </Switch>
       </div>
