@@ -27,3 +27,13 @@ NavLink takes care of active nav section for us, so we don't need to className="
               404 not found
             </Route>
 This is for the case when no route is found
+
+                    <div className="content-left col-12 d-none col-sm-7 d-sm-block">
+                        <div className='brand'>
+                            Duc
+                        </div>
+                        <div className='detail'>
+                            Learn everything...
+                        </div>
+                    </div>
+Means that col-7 and d-block only applicable for screen with small size and UP, anything below that is col-12 and d-none

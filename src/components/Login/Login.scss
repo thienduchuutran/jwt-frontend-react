@@ -32,6 +32,14 @@
     }
 
     .content-right{
+        .brand{
+            text-transform: uppercase ;
+            font-size: 20px;
+            color: #1877f2;
+            text-align: center;
+            font-weight: 600;
+        }
+
         border: 1px solid grey;
         border-radius: 10px;
         background-color: #fff;
