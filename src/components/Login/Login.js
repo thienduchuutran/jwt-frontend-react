@@ -1,6 +1,11 @@
 import './Login.scss'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 const Login = (props) => {
+    const handleCreateNewAccount = () => {
+        alert('me')
+    }
     return (
         <div className="login-container">
             <div className="container">
@@ -25,7 +30,9 @@ const Login = (props) => {
                         </span>
                         <hr/>
                         <div className='text-center'>
-                            <button className='btn-success'>Create New Account</button>
+                            <button className='btn-success' onClick={()=> handleCreateNewAccount()}>
+                                Create New Account
+                            </button>
                         </div>
                     </div>
                 </div>
