@@ -14,6 +14,23 @@
     background-color: #f0f2f5;
     min-height: 100vh;
     padding-top: 20px;
+
+    .content-left{
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        margin-top: 50px;
+        .brand{
+            text-transform: uppercase ;
+            font-size: 30px;
+            color: #1877f2;
+        }
+
+        .detail{
+            font-size: 20px;
+        }
+    }
+
     .content-right{
         border: 1px solid grey;
         border-radius: 10px;
@@ -30,4 +47,6 @@
             }
         }
     }
+
+
 }
