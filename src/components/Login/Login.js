@@ -1,10 +1,11 @@
 import './Login.scss'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const Login = (props) => {
+    let history = useHistory()
     const handleCreateNewAccount = () => {
-        alert('me')
+        history.push("/register")
     }
     return (
         <div className="login-container">
