@@ -2,6 +2,7 @@ import './Register.scss'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {toast} from 'react-toastify'
 
 const Register = (props) => {
     const[email, setEmail] = useState("")
@@ -21,7 +22,35 @@ const Register = (props) => {
         // })
     }, [])
 
+    //validating
+    const isValidInputs = () => {
+        if(!email){
+            toast.error("Email is required!")
+            return false
+        }
+        if(!phone){
+            toast.error("Phone is required!")
+            return false
+        }
+        if(!password){
+            toast.error("Password is required!")
+            return false
+        }
+        if(password !== confirmPass){
+            toast.error("Your password is not the same!")
+            return false
+        }
+
+        let regx = /\S+@\S+\.\S+/;
+        if(!regx.test(email)){
+            toast.error("Please enter valid email address!")
+            return false
+        }
+        return true
+    }
+
     const handleRegister = () => {
+        let check = isValidInputs()
         let userData = { email, phone, username, password}
         console.log('check: ', userData)
     }
@@ -72,7 +101,7 @@ const Register = (props) => {
                                 value={confirmPass} onChange={(event)=>setConfirmPass(event.target.value)}
                             />
                         </div>
-                        <button className='btn btn-primary' onClick={()=>handleRegister()}>Register</button>
+                        <button className='btn btn-primary'  type="button" onClick={()=>handleRegister()}>Register</button>
 
                         <hr />
                         <div className='text-center'>
