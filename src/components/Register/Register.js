@@ -20,6 +20,12 @@ const Register = (props) => {
         //     console.log('check data axios:', data)
         // })
     }, [])
+
+    const handleRegister = () => {
+        let userData = { email, phone, username, password}
+        console.log('check: ', userData)
+    }
+
     return (
         <div className="register-container">
             <div className="container">
@@ -66,7 +72,7 @@ const Register = (props) => {
                                 value={confirmPass} onChange={(event)=>setConfirmPass(event.target.value)}
                             />
                         </div>
-                        <button className='btn btn-primary'>Register</button>
+                        <button className='btn btn-primary' onClick={()=>handleRegister()}>Register</button>
 
                         <hr />
                         <div className='text-center'>
