@@ -10,6 +10,12 @@ const Register = (props) => {
     const[username, setUsername] = useState("")
     const[password, setPassword] = useState("")
     const[confirmPass, setConfirmPass] = useState("")
+    const[objCheckInput, setObjCheckInput] = useState({
+        isValidEmail: true,
+        isValidPhone: true,
+        isValidPassword: true,
+        isValidConfirmPass: true
+    })
 
     let history = useHistory()
     const handleLogin = () => {
@@ -73,13 +79,13 @@ const Register = (props) => {
                         </div>
                         <div className='form-group'>
                             <label>Email:</label>
-                            <input className='form-control' type='text' placeholder='Email address'
+                            <input className={objCheckInput.isValidEmail ? 'form-control' : 'form-control is-invalid'} type='text' placeholder='Email address'
                                 value={email} onChange={(event)=>setEmail(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
                             <label>Phone number:</label>
-                            <input className='form-control' type='text' placeholder='Phone number' 
+                            <input className={objCheckInput.isValidPhone ? 'form-control' : 'form-control is-invalid'} type='text' placeholder='Phone number' 
                                 value={phone} onChange={(event)=>setPhone(event.target.value)}
                             />
                         </div>
@@ -91,13 +97,13 @@ const Register = (props) => {
                         </div>
                         <div className='form-group'>
                             <label>Password:</label>
-                            <input className='form-control' type='password' placeholder='Password' 
+                            <input className={objCheckInput.isValidPassword ? 'form-control' : 'form-control is-invalid'} type='password' placeholder='Password' 
                                 value={password} onChange={(event)=>setPassword(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
                             <label>Re-enter password:</label>
-                            <input className='form-control' type='password' placeholder='Re-enter your password' 
+                            <input className={objCheckInput.isValidConfirmPass ? 'form-control' : 'form-control is-invalid'} type='password' placeholder='Re-enter your password' 
                                 value={confirmPass} onChange={(event)=>setConfirmPass(event.target.value)}
                             />
                         </div>
