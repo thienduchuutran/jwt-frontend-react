@@ -10,12 +10,13 @@ const Register = (props) => {
     const[username, setUsername] = useState("")
     const[password, setPassword] = useState("")
     const[confirmPass, setConfirmPass] = useState("")
-    const[objCheckInput, setObjCheckInput] = useState({
+    const defaultValidInput = {
         isValidEmail: true,
         isValidPhone: true,
         isValidPassword: true,
         isValidConfirmPass: true
-    })
+    }
+    const[objCheckInput, setObjCheckInput] = useState(defaultValidInput)
 
     let history = useHistory()
     const handleLogin = () => {
@@ -30,28 +31,40 @@ const Register = (props) => {
 
     //validating
     const isValidInputs = () => {
+        //we leaving this here so that before the app checks the validity of each field, all fields are valid first to avoid bugs
+        setObjCheckInput(defaultValidInput)
+
+        //now depends on these validation down here that whether a specific field is valid or no
         if(!email){
+            setObjCheckInput({...defaultValidInput, isValidEmail: false})
             toast.error("Email is required!")
-            return false
-        }
-        if(!phone){
-            toast.error("Phone is required!")
-            return false
-        }
-        if(!password){
-            toast.error("Password is required!")
-            return false
-        }
-        if(password !== confirmPass){
-            toast.error("Your password is not the same!")
             return false
         }
 
         let regx = /\S+@\S+\.\S+/;
         if(!regx.test(email)){
+            setObjCheckInput({...defaultValidInput, isValidEmail: false})
             toast.error("Please enter valid email address!")
             return false
         }
+
+        if(!phone){
+            setObjCheckInput({...defaultValidInput, isValidPhone: false})
+            toast.error("Phone is required!")
+            return false
+        }
+        if(!password){
+            setObjCheckInput({...defaultValidInput, isValidPassword: false})
+            toast.error("Password is required!")
+            return false
+        }
+        if(password !== confirmPass){
+            setObjCheckInput({...defaultValidInput, isValidConfirmPass: false})
+            toast.error("Your password is not the same!")
+            return false
+        }
+
+
         return true
     }
 
