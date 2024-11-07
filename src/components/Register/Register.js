@@ -23,11 +23,8 @@ const Register = (props) => {
         history.push("/login")
     }
 
-    useEffect(() => {
-        // axios.get("http://localhost:8085/api/test-api").then(data => {
-        //     console.log('check data axios:', data)
-        // })
-    }, [])
+    // useEffect(() => {
+    // }, [])
 
     //validating
     const isValidInputs = () => {
@@ -70,8 +67,11 @@ const Register = (props) => {
 
     const handleRegister = () => {
         let check = isValidInputs()
-        let userData = { email, phone, username, password}
-        console.log('check: ', userData)
+        if(check){
+            axios.post('http://localhost:8085/api/v1/register', {
+                email, phone, username, password
+            })
+        }
     }
 
     return (
@@ -120,7 +120,7 @@ const Register = (props) => {
                                 value={confirmPass} onChange={(event)=>setConfirmPass(event.target.value)}
                             />
                         </div>
-                        <button className='btn btn-primary'  type="button" onClick={()=>handleRegister()}>Register</button>
+                        <button className='btn btn-primary' type="button" onClick={()=>handleRegister()}>Register</button>
 
                         <hr />
                         <div className='text-center'>
