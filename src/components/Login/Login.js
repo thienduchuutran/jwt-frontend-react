@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Login.scss'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
-
+import { loginUser } from '../../services/userService';
 
 const Login = (props) => {
     let history = useHistory()
@@ -19,7 +19,7 @@ const Login = (props) => {
         history.push("/register")
     }
 
-    const handleLogin = () => {
+    const handleLogin = async() => {
         setObjCheckInput(defaultValidInput)
         if(!valueLogin){
             setObjCheckInput({...defaultValidInput, isValidLoginValue: false})
@@ -32,6 +32,8 @@ const Login = (props) => {
             toast.error("Please enter your password")
             return
         }
+
+        await loginUser(valueLogin, password)
     }
 
 
