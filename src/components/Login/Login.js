@@ -1,12 +1,19 @@
+import { useState } from 'react';
 import './Login.scss'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const Login = (props) => {
     let history = useHistory()
+
+    const [valueLogin, setValueLogin] = useState("")
+    const [password, setPassword] = useState("")
+
     const handleCreateNewAccount = () => {
         history.push("/register")
     }
+
+
     return (
         <div className="login-container">
             <div className="container">
@@ -23,8 +30,20 @@ const Login = (props) => {
                         <div className='brand d-sm-none'>
                                 Duc
                         </div>
-                        <input className='form-control' type='text' placeholder='Email address or phone number'/>
-                        <input className='form-control' type='password' placeholder='Password'/>
+                        <input 
+                            className='form-control' 
+                            type='text' 
+                            placeholder='Email address or phone number'
+                            value={valueLogin}
+                            onChange={(event)=>{setValueLogin(event.target.value)}} //gets the value of input field and returns
+                        />
+                        <input 
+                            className='form-control' 
+                            type='password' 
+                            placeholder='Password'
+                            value={password}
+                            onChange={(event)=>{setPassword(event.target.value)}}
+                        />
                         <button className='btn btn-primary'>Login</button>
                         <span className='text-center'>
                             <a className='forgot-password' href='#'>Forgot your password?</a>
