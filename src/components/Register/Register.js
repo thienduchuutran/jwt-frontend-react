@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {toast} from 'react-toastify'
+import { registerNewUser } from '../../services/userService';
 
 const Register = (props) => {
     const[email, setEmail] = useState("")
@@ -68,9 +69,7 @@ const Register = (props) => {
     const handleRegister = () => {
         let check = isValidInputs()
         if(check){
-            axios.post('http://localhost:8085/api/v1/register', {
-                email, phone, username, password
-            })
+            registerNewUser(email, phone, username, password)
         }
     }
 
