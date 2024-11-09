@@ -66,10 +66,18 @@ const Register = (props) => {
         return true
     }
 
-    const handleRegister = () => {
+    const handleRegister = async() => {
         let check = isValidInputs()
         if(check){
-            registerNewUser(email, phone, username, password)
+            let response = await registerNewUser(email, phone, username, password)
+            let serverData = response.data
+            if(+serverData.EC === 0){
+                toast.success(serverData.EM)
+                history.push("/login")  //if created user successfully, going back to login page
+            }else{
+                setObjCheckInput({...defaultValidInput, isValidEmail: false})
+                toast.error(serverData.EM)
+            }
         }
     }
 
