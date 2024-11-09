@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Login.scss'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { toast } from 'react-toastify';
 
 
 const Login = (props) => {
@@ -8,9 +9,29 @@ const Login = (props) => {
 
     const [valueLogin, setValueLogin] = useState("")
     const [password, setPassword] = useState("")
+    const defaultValidInput = {
+        isValidLoginValue: true,
+        isValidPassword: true,
+    }
+    const[objCheckInput, setObjCheckInput] = useState(defaultValidInput)
 
     const handleCreateNewAccount = () => {
         history.push("/register")
+    }
+
+    const handleLogin = () => {
+        setObjCheckInput(defaultValidInput)
+        if(!valueLogin){
+            setObjCheckInput({...defaultValidInput, isValidLoginValue: false})
+            toast.error("Please enter your email address or phone number")
+            return
+        }
+
+        if(!password){
+            setObjCheckInput({...defaultValidInput, isValidPassword: false})
+            toast.error("Please enter your password")
+            return
+        }
     }
 
 
@@ -31,20 +52,23 @@ const Login = (props) => {
                                 Duc
                         </div>
                         <input 
-                            className='form-control' 
+                            className={objCheckInput.isValidLoginValue ? 'form-control' : 'form-control is-invalid' }
                             type='text' 
                             placeholder='Email address or phone number'
                             value={valueLogin}
                             onChange={(event)=>{setValueLogin(event.target.value)}} //gets the value of input field and returns
                         />
                         <input 
-                            className='form-control' 
+                            className={objCheckInput.isValidPassword ? 'form-control' : 'form-control is-invalid' }
                             type='password' 
                             placeholder='Password'
                             value={password}
                             onChange={(event)=>{setPassword(event.target.value)}}
                         />
-                        <button className='btn btn-primary'>Login</button>
+                        <button 
+                            className='btn btn-primary'
+                            onClick={()=>handleLogin()}
+                        >Login</button>
                         <span className='text-center'>
                             <a className='forgot-password' href='#'>Forgot your password?</a>
                         </span>
