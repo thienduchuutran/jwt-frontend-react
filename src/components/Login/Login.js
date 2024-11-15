@@ -33,7 +33,12 @@ const Login = (props) => {
             return
         }
 
-        await loginUser(valueLogin, password)
+        let res = await loginUser(valueLogin, password)
+        if(res && res.data && +res.data.EC !== 0){
+            //error
+            toast.error(res.data.EM)
+        }
+        console.log('check res: ', res.data)
     }
 
 
