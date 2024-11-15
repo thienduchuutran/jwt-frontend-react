@@ -44,6 +44,7 @@ const Login = (props) => {
             }
             sessionStorage.setItem('account', JSON.stringify(data))
             history.push('/users')
+            window.location.reload()    //location points to what page we currently at, this means reload /users
         }
     }
 
