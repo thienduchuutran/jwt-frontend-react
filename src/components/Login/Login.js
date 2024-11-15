@@ -48,6 +48,12 @@ const Login = (props) => {
         }
     }
 
+    const handlePressEnter = (event)=> {
+        if(event.keyCode === 13 && event.code === "Enter"){
+            handleLogin()
+        }
+    }
+
 
     return (
         <div className="login-container">
@@ -78,6 +84,7 @@ const Login = (props) => {
                             placeholder='Password'
                             value={password}
                             onChange={(event)=>{setPassword(event.target.value)}}
+                            onKeyDown={(event)=>handlePressEnter(event)}
                         />
                         <button 
                             className='btn btn-primary'
