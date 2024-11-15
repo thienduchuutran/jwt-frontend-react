@@ -37,8 +37,9 @@ const Login = (props) => {
         if(res && res.data && +res.data.EC !== 0){
             //error
             toast.error(res.data.EM)
+        }else{
+            history.push('/users')
         }
-        console.log('check res: ', res.data)
     }
 
 
