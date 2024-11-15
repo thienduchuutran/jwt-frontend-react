@@ -38,6 +38,11 @@ const Login = (props) => {
             //error
             toast.error(res.data.EM)
         }else{
+            let data = {
+                isAuthenticated: true,
+                token: 'fake token'
+            }
+            sessionStorage.setItem('account', JSON.stringify(data))
             history.push('/users')
         }
     }

@@ -37,3 +37,6 @@ This is for the case when no route is found
                         </div>
                     </div>
 Means that col-7 and d-block only applicable for screen with small size and UP, anything below that is col-12 and d-none
+
+SessionStorage saves data as key-value format
+When we close the tab, all data in SessionStorage is deleted
