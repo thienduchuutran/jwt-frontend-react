@@ -10,6 +10,7 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import Users from './components/ManageUsers/Users';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register/>
+            </Route>
+            <Route path="/users">
+              <Users/>
             </Route>
             <Route path="/" exact>
               home
