@@ -3,6 +3,7 @@ import './Nav.scss'
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Nav = (props) => {
+    
     return (
         <div className='topnav'>
             <NavLink to="/" exact>Home</NavLink>

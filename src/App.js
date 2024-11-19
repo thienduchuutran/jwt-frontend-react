@@ -6,7 +6,6 @@ import {
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from 'react';
-import _ from 'lodash'
 import AppRoutes from './routes/AppRoute';
 
 function App() {
