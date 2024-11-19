@@ -10,6 +10,7 @@ const PrivateRoutes = (props) => {
         let session = sessionStorage.getItem('account')
         if(!session){
             history.push("/login")
+            window.location.reload() //location points to what page we currently at, this means reload /login
         }
     }, [])
     return (

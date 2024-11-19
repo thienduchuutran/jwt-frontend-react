@@ -15,8 +15,8 @@ const Nav = (props) => {
         {isShow &&
         <div className='topnav'>
             <NavLink to="/" exact>Home</NavLink>
-            <NavLink to="/news">News</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/users">Users</NavLink>
+            <NavLink to="/project">Projects</NavLink>
             <NavLink to="/about">About</NavLink>
         </div>
         }
