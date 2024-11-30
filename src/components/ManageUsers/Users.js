@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { fetchAllUser } from "../../services/userService"
+import ReactPaginate from "react-paginate"
 
 const Users = (props) => {
     const [listUsers, setListUsers] = useState([])
@@ -15,6 +16,10 @@ const Users = (props) => {
             setListUsers(res.data.DT)
             console.log(res.data.DT)
         }
+    }
+
+    const handlePageClick = (event)=> {
+        
     }
 
     return(
@@ -67,15 +72,23 @@ const Users = (props) => {
                     </table>
                 </div>
                 <div className="user-footer">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+                    <ReactPaginate
+                        nextLabel="next >"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        marginPagesDisplayed={4}
+                        pageCount={50}
+                        previousLabel="< previous"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item"
+                        nextLinkClassName="page-link"
+                        breakLabel="..."
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                    />
                 </div>
             </div>
         </div>
